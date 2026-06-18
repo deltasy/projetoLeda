@@ -16,6 +16,16 @@ public class Estudante implements Comparable<Estudante> {
     // Atualizar compareTo
     @Override
     public int compareTo(Estudante estudante2) {
-        return 0;
+        int comparacaoNota = Integer.compare(this.nota, estudante2.nota);
+        if(comparacaoNota != 0){
+            return comparacaoNota;
+        }
+
+        int comparacaoNome = this.nome.compareTo(estudante2.nome);
+        if(comparacaoNome != 0){
+            return comparacaoNome;
+        }
+
+        return this.matricula.compareTo(estudante2.matricula);
     }
 }

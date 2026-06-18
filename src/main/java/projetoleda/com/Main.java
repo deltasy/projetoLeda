@@ -11,5 +11,9 @@ public class Main {
         for(Estudante e : lista){
             System.out.printf("%s / %s / %d\n", e.nome, e.matricula, e.nota);
         }
+
+        Estudante e1 = lista.getFirst();
+        Estudante e2 = lista.get(1);
+        System.out.println(e1.compareTo(e2));
     }
 }
