@@ -29,10 +29,10 @@ public class EstudanteFactory {
             "Almeida", "Lopes", "Soares", "Fernandes", "Vieira", "Barbosa"
     };
 
-    public static List<Estudante> criarEstudantes(int quantidade){
-        List<Estudante> lista = new ArrayList<>();
+    public static Estudante[] criarEstudantes(int quantidade){
+        Estudante[] lista = new Estudante[quantidade];
         for(int i = 0; i < quantidade; i++){
-            lista.add(criarEstudante());
+            lista[i] = criarEstudante();
         }
 
         return lista;
@@ -40,10 +40,10 @@ public class EstudanteFactory {
 
     public static Estudante criarEstudante(){
         return new Estudante(
-                "20242085100" + RANDOM.nextInt(100),
+                "20242085100" + RANDOM.nextInt(10,99),
                 NOMES[RANDOM.nextInt(NOMES.length)] + " " +
                         SOBRENOMES[RANDOM.nextInt(SOBRENOMES.length)],
-                RANDOM.nextInt(100)
+                RANDOM.nextInt(10)
         );
     }
 

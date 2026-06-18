@@ -1,19 +1,29 @@
 package projetoleda.com;
 
+import projetoleda.com.ordenacao.*;
+
+import java.util.Arrays;
 import java.util.List;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        List<Estudante> lista = EstudanteFactory.criarEstudantes(10);
+        Estudante[] estudantesGerados = EstudanteFactory.criarEstudantes(10);
+        Estudante[] listaOriginal = estudantesGerados.clone();
+        Estudante[] listaOrdenada = estudantesGerados.clone();
+        Arrays.sort(listaOrdenada);
 
-        for(Estudante e : lista){
-            System.out.printf("%s / %s / %d\n", e.nome, e.matricula, e.nota);
+        List<Sorter<Estudante>> algoritmos = List.of(
+                new BubbleSort<>(),
+                new BubbleSortOtimizado<>(),
+                new InsertionSort<>()
+        );
+
+        for (Sorter<Estudante> a : algoritmos) {
+            Testador.testar(a, listaOriginal, listaOrdenada);
         }
 
-        Estudante e1 = lista.getFirst();
-        Estudante e2 = lista.get(1);
-        System.out.println(e1.compareTo(e2));
+        System.out.println();
+        System.out.println("Lista original (desordenada):");
+        Utils.printEstudantes(listaOriginal);
     }
 }
