@@ -29,6 +29,10 @@ public class Estudante implements Comparable<Estudante> {
         return this.matricula.compareTo(estudante2.matricula);
     }
 
+    public int getNota() {
+        return nota;
+    }
+
     @Override
     public String toString() {
         return String.format("%s / %s / %d", nome, matricula, nota);
