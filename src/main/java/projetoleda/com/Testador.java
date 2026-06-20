@@ -119,6 +119,7 @@ public class Testador {
     public static void ExecutarTestesBusca(int Qtd) {
         if (Qtd < 1) return;
         Estudante[] lista = EstudanteFactory.criarEstudantes(Qtd);
+        Arrays.sort(lista);
         int indice_alvo = random.nextInt(lista.length);
         Estudante alvo = lista[indice_alvo];
 
