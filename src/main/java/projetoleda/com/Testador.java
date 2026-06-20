@@ -32,8 +32,8 @@ public class Testador {
             System.out.print("(✘) ");
         }
 
-        double tempoMin = (fim - inicio) / 60_000_000_000.0;
-        System.out.printf("%-25s → %.3f min%n", sorter.getNome(), tempoMin);
+        double tempoS = (fim - inicio) / 1_000_000_000.0;
+        System.out.printf("%-25s → %.3fs%n", sorter.getNome(), tempoS);
     }
 
     private static void shuffle(Estudante[] A) {
@@ -72,8 +72,8 @@ public class Testador {
             System.out.print("(✘) ");
         }
 
-        double tempoMin = (fim - inicio) / 60_000_000_000.0;
-        System.out.printf("%-25s → %.3f min%n", search.getNome(), tempoMin);
+        double tempoS = (fim - inicio) / 1_000_000_000.0;
+        System.out.printf("%-25s → %.3fs%n", search.getNome(), tempoS);
 
         System.out.println(indiceEncontrado);
         System.out.println(indiceReal);
@@ -83,13 +83,13 @@ public class Testador {
         if (Qtd < 1) return;
         Estudante[] lista = EstudanteFactory.criarEstudantes(Qtd);
         Estudante[] listaOrdenada = lista.clone();
-        Arrays.sort(listaOrdenada);
+        Arrays.sort(listaOrdenada, Estudante::compareTo);
 
         switch (cenario) {
-            case ORDENADO: Arrays.sort(lista); break;
+            case ORDENADO: Arrays.sort(lista, Estudante::compareTo); break;
             case DESORDENADO: shuffle(lista); break;
             case ORDENADO_INVERSAMENTE:
-                Arrays.sort(lista);
+                Arrays.sort(lista, Estudante::compareTo);
                 inverter(lista);
                 break;
         }

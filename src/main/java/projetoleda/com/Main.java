@@ -2,7 +2,7 @@ package projetoleda.com;
 
 public class Main {
     public static void main(String[] args) {
-        int caso1 = 1_000;
+        int caso1 = 20_000;
         int caso2 = 0;
         int caso3 = 0;
 
@@ -10,7 +10,17 @@ public class Main {
 //        Testador.ExecutarTestesBusca(caso2);
 //        Testador.ExecutarTestesBusca(caso3);
 
-        Testador.ExecutarTestesOrdenacao(Cenarios.DESORDENADO, caso1);
+//        for (int i = 0; i < 20; i++){
+//            Testador.ExecutarTestesOrdenacao(Cenarios.DESORDENADO, caso1);
+//        }
+
+//        for (int i = 0; i < 20; i++){
+//            Testador.ExecutarTestesOrdenacao(Cenarios.ORDENADO, caso1);
+//        }
+
+        for (int i = 0; i < 20; i++){
+            Testador.ExecutarTestesOrdenacao(Cenarios.ORDENADO_INVERSAMENTE, caso1);
+        }
 //        Testador.ExecutarTestesOrdenacao(Cenarios.DESORDENADO, caso2);
 //        Testador.ExecutarTestesOrdenacao(Cenarios.DESORDENADO, caso3);
 //

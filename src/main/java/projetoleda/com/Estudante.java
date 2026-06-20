@@ -37,4 +37,24 @@ public class Estudante implements Comparable<Estudante> {
     public String toString() {
         return String.format("%s / %s / %d", nome, matricula, nota);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Estudante outro = (Estudante) obj;
+
+        return this.nota == outro.nota &&
+                this.nome.equals(outro.nome) &&
+                this.matricula.equals(outro.matricula);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = matricula != null ? matricula.hashCode() : 0;
+        result = 31 * result + (nome != null ? nome.hashCode() : 0);
+        result = 31 * result + nota;
+        return result;
+    }
 }
