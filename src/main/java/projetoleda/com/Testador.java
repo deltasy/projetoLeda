@@ -30,8 +30,6 @@ public class Testador {
         }
         else{
             System.out.print("(✘) ");
-            // Se a ordenação está incorreta, printe a lista inteira para detectar erros
-            Utils.printEstudantes(lista);
         }
 
         double tempoMin = (fim - inicio) / 60_000_000_000.0;
