@@ -2,6 +2,9 @@ package projetoleda.com;
 
 import projetoleda.com.busca.BuscaBinariaIterativa;
 import projetoleda.com.busca.BuscaBinariaRecursiva;
+import projetoleda.com.busca.BuscaLinear;
+import projetoleda.com.busca.BuscaLinearDuasPontas;
+import projetoleda.com.busca.Searcher;
 import projetoleda.com.ordenacao.*;
 
 import java.util.Arrays;
@@ -18,20 +21,22 @@ public class Main {
         List<Sorter<Estudante>> algoritmos = List.of(
                 new BubbleSort<>(),
                 new BubbleSortOtimizado<>(),
+                new CountingSort<>(Estudante::getNota),
                 new InsertionSort<>(),
                 new SelectionSort<>(),
                 new SelectionSortEstavel<>(),
                 new MergeSort<>(),
-                new MergeSortTimSort<>()
-        );
+                new MergeSortTimSort<>(),
+                new QuickSortDualPivot<>(),
+                new QuickSortHoare<>(),
+                new QuickSortHoareShuffle<>()
+                );
 
+        System.out.print("\n\n================ Algoritmos de Ordenação ================\n");
         for (Sorter<Estudante> a : algoritmos) {
             Testador.testar(a, listaOriginal, listaOrdenada);
+            System.out.print("---------------------------------------------------------\n");
         }
-
-        System.out.println();
-        System.out.println("Lista original (desordenada):");
-        Utils.printEstudantes(listaOriginal);
 
         // buscas binárias
         // o array precisa estar ordenado antes das buscas
@@ -41,14 +46,22 @@ public class Main {
         // usa o primeiro estudante da lista ordenada como alvo de exemplo
         Estudante alvo = listaParaBusca[0];
 
-        System.out.println();
-        System.out.println("=== Buscas Binárias ===");
-        System.out.println("Alvo: " + alvo);
+        Searcher<Estudante> buscadorBI = new BuscaBinariaIterativa<>();
+        Searcher<Estudante> buscadorBR = new BuscaBinariaRecursiva<>();
+        Searcher<Estudante> buscadorBL = new BuscaLinear<>();
+        Searcher<Estudante> buscadorBLDP = new BuscaLinearDuasPontas<>();
 
-        int resultadoIterativo = BuscaBinariaIterativa.buscar(listaParaBusca, alvo);
-        System.out.println("Busca Binária Iterativa  → índice: " + resultadoIterativo);
+        List<Searcher<Estudante>> buscadores = List.of(
+                buscadorBI,
+                buscadorBR,
+                buscadorBL,
+                buscadorBLDP
+        );
 
-        int resultadoRecursivo = BuscaBinariaRecursiva.buscar(listaParaBusca, alvo);
-        System.out.println("Busca Binária Recursiva  → índice: " + resultadoRecursivo);
+        System.out.print("\n\n================ Algoritmos de Busca ================\n");
+        for (Searcher<Estudante> buscadorAtual : buscadores) {
+            Testador.testarSearch(buscadorAtual, listaOriginal, alvo);
+            System.out.print("-----------------------------------------------------\n");
+        }
     }
 }
