@@ -1,7 +1,8 @@
 package projetoleda.com.busca;
 
-public class BuscaBinariaIterativa {
-    public static <T extends Comparable<T>> int buscar(T[] lista, T alvo) {
+public class BuscaBinariaIterativa<T extends Comparable<T>> implements Searcher<T> {
+    @Override
+    public int buscar(T[] lista, T alvo) {
         int esquerda = 0;
         int direita = lista.length - 1;
 
@@ -18,5 +19,10 @@ public class BuscaBinariaIterativa {
             }
         }
         return -1; // não encontrou
+    }
+
+    @Override
+    public String getNome() {
+        return "BUSCA BINÁRIA INTERATIVA";
     }
 }

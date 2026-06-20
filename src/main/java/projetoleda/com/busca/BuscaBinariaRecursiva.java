@@ -1,11 +1,12 @@
 package projetoleda.com.busca;
 
-public class BuscaBinariaRecursiva {
-    public static <T extends Comparable<T>> int buscar(T[] lista, T alvo) {
+public class BuscaBinariaRecursiva<T extends Comparable<T>> implements Searcher<T> {
+    @Override
+    public int buscar(T[] lista, T alvo) {
         return buscar(lista, alvo, 0, lista.length - 1);
     }
 
-    private static <T extends Comparable<T>> int buscar(
+    private int buscar(
             T[] lista,
             T alvo,
             int inicio,
@@ -27,5 +28,10 @@ public class BuscaBinariaRecursiva {
         }
 
         return buscar(lista, alvo, meio + 1, fim);
+    }
+
+    @Override
+    public String getNome() {
+        return "BUSCA BINÁRIA RECURSIVA";
     }
 }
