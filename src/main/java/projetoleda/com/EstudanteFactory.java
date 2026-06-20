@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.List;
 
 public class EstudanteFactory {
+    static int count = 0;
     private static final Random RANDOM = new Random();
     public static final String[] NOMES = {
             "Ana", "Bruno", "Carlos", "Daniela", "Eduardo", "Fernanda", "Gabriel", "Helena",
@@ -40,7 +41,7 @@ public class EstudanteFactory {
 
     public static Estudante criarEstudante(){
         return new Estudante(
-                "20242085100" + RANDOM.nextInt(10,99),
+                "202020767" + (count++),
                 NOMES[RANDOM.nextInt(NOMES.length)] + " " +
                         SOBRENOMES[RANDOM.nextInt(SOBRENOMES.length)],
                 RANDOM.nextInt(10)
