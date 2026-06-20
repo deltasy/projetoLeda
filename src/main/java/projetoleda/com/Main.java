@@ -1,67 +1,25 @@
 package projetoleda.com;
 
-import projetoleda.com.busca.BuscaBinariaIterativa;
-import projetoleda.com.busca.BuscaBinariaRecursiva;
-import projetoleda.com.busca.BuscaLinear;
-import projetoleda.com.busca.BuscaLinearDuasPontas;
-import projetoleda.com.busca.Searcher;
-import projetoleda.com.ordenacao.*;
-
-import java.util.Arrays;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
-        Estudante[] estudantesGerados = EstudanteFactory.criarEstudantes(10);
-        Estudante[] listaOriginal = estudantesGerados.clone();
-        Estudante[] listaOrdenada = estudantesGerados.clone();
-        Arrays.sort(listaOrdenada);
+        int caso1 = 1_000;
+        int caso2 = 0;
+        int caso3 = 0;
 
-        // ordenações
-        List<Sorter<Estudante>> algoritmos = List.of(
-                new BubbleSort<>(),
-                new BubbleSortOtimizado<>(),
-                new CountingSort<>(Estudante::getNota),
-                new InsertionSort<>(),
-                new SelectionSort<>(),
-                new SelectionSortEstavel<>(),
-                new MergeSort<>(),
-                new MergeSortTimSort<>(),
-                new QuickSortDualPivot<>(),
-                new QuickSortHoare<>(),
-                new QuickSortHoareShuffle<>()
-                );
+//        Testador.ExecutarTestesBusca(caso1);
+//        Testador.ExecutarTestesBusca(caso2);
+//        Testador.ExecutarTestesBusca(caso3);
 
-        System.out.print("\n\n================ Algoritmos de Ordenação ================\n");
-        for (Sorter<Estudante> a : algoritmos) {
-            Testador.testar(a, listaOriginal, listaOrdenada);
-            System.out.print("---------------------------------------------------------\n");
-        }
-
-        // buscas binárias
-        // o array precisa estar ordenado antes das buscas
-        Estudante[] listaParaBusca = listaOriginal.clone();
-        Arrays.sort(listaParaBusca);
-
-        // usa o primeiro estudante da lista ordenada como alvo de exemplo
-        Estudante alvo = listaParaBusca[0];
-
-        Searcher<Estudante> buscadorBI = new BuscaBinariaIterativa<>();
-        Searcher<Estudante> buscadorBR = new BuscaBinariaRecursiva<>();
-        Searcher<Estudante> buscadorBL = new BuscaLinear<>();
-        Searcher<Estudante> buscadorBLDP = new BuscaLinearDuasPontas<>();
-
-        List<Searcher<Estudante>> buscadores = List.of(
-                buscadorBI,
-                buscadorBR,
-                buscadorBL,
-                buscadorBLDP
-        );
-
-        System.out.print("\n\n================ Algoritmos de Busca ================\n");
-        for (Searcher<Estudante> buscadorAtual : buscadores) {
-            Testador.testarSearch(buscadorAtual, listaOriginal, alvo);
-            System.out.print("-----------------------------------------------------\n");
-        }
+        Testador.ExecutarTestesOrdenacao(Cenarios.DESORDENADO, caso1);
+//        Testador.ExecutarTestesOrdenacao(Cenarios.DESORDENADO, caso2);
+//        Testador.ExecutarTestesOrdenacao(Cenarios.DESORDENADO, caso3);
+//
+//        Testador.ExecutarTestesOrdenacao(Cenarios.ORDENADO_INVERSAMENTE, caso1);
+//        Testador.ExecutarTestesOrdenacao(Cenarios.ORDENADO_INVERSAMENTE, caso2);
+//        Testador.ExecutarTestesOrdenacao(Cenarios.ORDENADO_INVERSAMENTE, caso3);
+//
+//        Testador.ExecutarTestesOrdenacao(Cenarios.ORDENADO, caso1);
+//        Testador.ExecutarTestesOrdenacao(Cenarios.ORDENADO, caso2);
+//        Testador.ExecutarTestesOrdenacao(Cenarios.ORDENADO, caso3);
     }
 }

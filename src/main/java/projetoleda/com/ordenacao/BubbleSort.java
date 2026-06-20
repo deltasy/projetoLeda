@@ -5,7 +5,6 @@ import java.util.List;
 public class BubbleSort<T extends Comparable<T>> implements Sorter<T> {
     @Override
     public void sort(T[] a) {
-
         for (int i = 0; i < a.length - 1; i++) {
             for (int j = 0; j < a.length - i - 1; j++) {
 
